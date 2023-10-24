@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from base.forms import CadastroForm
-from base.models import Cadastro
 
 # Create your views here.
 def inicio(request):
