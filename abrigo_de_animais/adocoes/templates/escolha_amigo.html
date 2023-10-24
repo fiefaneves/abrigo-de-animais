@@ -1,0 +1,13 @@
+{% extends "inicio.html" %}
+{% load bootstrap5 %}
+{% block principal %}
+
+<h1 class="text-body-emphasis">Abrigo de animais</h1>
+
+<h1> Amigos disponíveis para adoção </h1> <br>
+
+{% for adocao in adocoes %}
+  <p> {{adocoes.nome}} </p>
+{% endfor %}
+
+{% endblock %}
