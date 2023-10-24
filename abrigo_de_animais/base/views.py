@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from base.forms import CadastroForm
+from base.models import Cadastro
 
 # Create your views here.
 def inicio(request):
@@ -7,12 +8,10 @@ def inicio(request):
 
 def cadastro(request):
     sucesso = False
-    if request.method == 'GET':
-        form = CadastroForm()
-    else:
-        form = CadastroForm(request.POST)
-        if form.is_valid():
+    form = CadastroForm(request.POST or None)
+    if form.is_valid():
             sucesso = True
+            form.save()
     contexto = {
         'form': form,
         'sucesso': sucesso
