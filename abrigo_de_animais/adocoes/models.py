@@ -13,7 +13,7 @@ class Adocoes(models.Model):
     especie = models.CharField(max_length=50, choices=especies)
     idade = models.IntegerField()
     raca = models.CharField(max_length=50)
-    historico_de_saúde = models.TextField()
+    historico_de_saude = models.TextField()
     data_de_cadastro = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -2,12 +2,24 @@
 {% load bootstrap5 %}
 {% block principal %}
 
-<h1 class="text-body-emphasis">Abrigo de animais</h1>
+<h1 class="text-body-emphasis">Cadastre um amigo para adoção:</h1>
 
-<h1> Amigos disponíveis para adoção </h1> <br>
+{% if sucesso %}
+<p class="alert alert-success">Amigo cadastrado com sucesso!</p>
+{% endif %}
+
+<form action="" method="POST" id="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+
+  <button type="submit" class="btn btn-primary btn-block">Cadastrar amigo</button>
+
+</form>
+<hr>
+<a href="amigos_disponiveis/" class="btn btn-primary btn-lg px-4"> Amigos disponíveis para adoção </a> <br>
 
 {% for adocao in adocoes %}
-  <p> {{adocoes.nome}} </p>
+  <p> {{adocao.nome}} </p>
 {% endfor %}
 
 {% endblock %}
