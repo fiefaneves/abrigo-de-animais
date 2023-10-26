@@ -1,0 +1,14 @@
+{% extends "inicio.html" %}
+{% load bootstrap5 %}
+{% block principal %}
+
+<h1 class="text-body-emphasis">Detalhes do seu amigo</h1>
+
+<h1>Detalhes do Animal: {{ animal.nome }}</h1>
+<p>Espécie: {{ animal.especie }}</p>
+<p>Idade: {{ animal.idade }} anos</p>
+<p>Raça: {{ animal.raca }}</p>
+<p>Histórico de Saúde: {{ animal.historico_saude }}</p>
+<img src="{{ animal.foto.url }}" alt="{{ animal.nome }}">
+
+{% endblock %}

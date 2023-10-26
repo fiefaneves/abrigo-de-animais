@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from adocoes.forms import AdocoesForm
 from adocoes.models import Adocoes
 from django.views.decorators.cache import cache_page
@@ -24,9 +24,9 @@ def amigos_disponiveis(request):
     }
     return render(request, 'amigos_disponiveis.html', contexto)
 
-def detalhes(request):
-    adocoes = Adocoes.objects.all()
+def detalhes_animal(request, animal_id):
+    animal = get_object_or_404(Adocoes, pk=animal_id)
     contexto = {
-        'adocoes': adocoes
+        'animal': animal
     }
-    return render(request, 'detalhes.html', contexto)
+    return render(request, 'detalhes_animal.html', contexto)

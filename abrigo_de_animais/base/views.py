@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from base.forms import CadastroForm
+from adocoes.models import Adocoes
 
 # Create your views here.
 def inicio(request):
-    return render(request, 'inicio.html')
+    adocoes = Adocoes.objects.all()
+    contexto = {
+        'adocoes': adocoes
+    }
+    return render(request, 'inicio.html', contexto)
 
 def cadastro(request):
     sucesso = False

@@ -168,23 +168,47 @@
 
   <main>
 
-    {% block principal %}
-    <h1 class="text-body-emphasis">Adote um amigo!</h1>
-    <p class="fs-5 col-md-8">Diversos animais a espera de um lar!</p>
-    <hr class="col-3 col-md-2 mb-5">
-
+    <style>
+      .square-image-container {
+      width: 100%;
+      padding-bottom: 100%; /* Define a proporção quadrada (altura igual à largura) */
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .square-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Mantém a imagem dentro do contêiner quadrado */
+    }
+    </style>
+    <div>
+      <h1 class="text-body-emphasis">Adote um amigo!</h1>
+      <p class="fs-5 col-md-8">Diversos animais a espera de um lar!</p>
+    </div>
+    <div class="row">
+      {% block principal %}
       {% for adocao in adocoes %}
-        <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
-            <div class="card h-100 p-4">
-              <img src="{{ adocao.foto.url }}" class="card-img-top">
-              <p> {{adocao.nome}}, {{adocao.idade}}. </p>
+        <div class="col-4" style="padding-bottom: 10px;">
+          <div class="card h-100 p-4" style="align-items: center">
+            <div class="square-image-container">
+              <img src="{{ adocao.foto.url }}" class="square-image" alt="{{ adocao.nome }}">
             </div>
+            <div class="card-body">
+              <h5 class="card-title" > <a href="/amigo/{{ adocao.id }}/">{{ adocao.nome }}</a>, {{ adocao.idade }} anos.</h5>
+              <a href="/cadastro" class="btn btn-primary btn-block text-white">Quero adotar</a>
+            </div>
+          </div>
         </div>
       {% empty %}
-      <p>Nenhum animal disponível.</p>
+      <p class="col">Nenhum amigo disponível.</p>
       {% endfor %}
 
-    {% endblock %}
+      {% endblock %}
+    </div>
 
   </main>
   <footer class="pt-5 my-5 text-body-secondary border-top">
