@@ -23,3 +23,10 @@ def amigos_disponiveis(request):
         'adocoes': adocoes
     }
     return render(request, 'amigos_disponiveis.html', contexto)
+
+def detalhes(request):
+    adocoes = Adocoes.objects.all()
+    contexto = {
+        'adocoes': adocoes
+    }
+    return render(request, 'detalhes.html', contexto)

@@ -147,26 +147,45 @@
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-4">Abrigo de animais</span>
     </a>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/cadastro">Quero adotar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/adocoes/cadastro_amigo">Cadastre um animal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/adocoes/amigos_disponiveis">Amigos disponíveis</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <main>
+
     {% block principal %}
     <h1 class="text-body-emphasis">Adote um amigo!</h1>
-    
-   
-    <p class="fs-5 col-md-8">Diversos lalala!</p>
-
-    <div class="mb-5">
-      <a href="cadastro" class="btn btn-primary btn-lg px-4">Quero adotar um amigo!</a>
-    </div>
-    <div class="mb-5">
-      <a href="adocoes/cadastro_amigo" class="btn btn-primary btn-lg px-4">Cadastre um amigo para adoção</a>
-    </div>
-    <div class="mb-5">
-      <a href="adocoes/amigos_disponiveis" class="btn btn-primary btn-lg px-4">Amigos disponíveis para adoção</a>
-    </div>
+    <p class="fs-5 col-md-8">Diversos animais a espera de um lar!</p>
     <hr class="col-3 col-md-2 mb-5">
+
+      {% for adocao in adocoes %}
+        <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
+            <div class="card h-100 p-4">
+              <img src="{{ adocao.foto.url }}" class="card-img-top">
+              <p> {{adocao.nome}}, {{adocao.idade}}. </p>
+            </div>
+        </div>
+      {% empty %}
+      <p>Nenhum animal disponível.</p>
+      {% endfor %}
+
     {% endblock %}
+
   </main>
   <footer class="pt-5 my-5 text-body-secondary border-top">
     Criado por Fernanda Neves
