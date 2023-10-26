@@ -4,4 +4,4 @@ from adocoes.models import Adocoes
 class AdocoesForm(forms.ModelForm):
     class Meta:
         model = Adocoes
-        fields = ['nome', 'especie', 'idade', 'raca', 'historico_de_saude' ]
+        fields = ['foto', 'nome', 'especie', 'idade', 'raca', 'historico_de_saude']

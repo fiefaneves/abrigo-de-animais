@@ -11,15 +11,6 @@
 <form action="" method="POST" id="form">
   {% csrf_token %}
   {% bootstrap_form form %}
-
-  <button type="submit" class="btn btn-primary btn-block">Cadastrar amigo</button>
-
+    <button type="submit" class="btn btn-primary btn-block">Cadastrar amigo</button>
 </form>
-<hr>
-<a href="amigos_disponiveis/" class="btn btn-primary btn-lg px-4"> Amigos disponíveis para adoção </a> <br>
-
-{% for adocao in adocoes %}
-  <p> {{adocao.nome}} </p>
-{% endfor %}
-
 {% endblock %}

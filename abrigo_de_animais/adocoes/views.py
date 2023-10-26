@@ -14,7 +14,7 @@ def cadastro_adocao(request):
         'form': form,
         'sucesso': sucesso
     }
-    return render(request, 'escolha_amigo.html', contexto)
+    return render(request, 'cadastro_amigo.html', contexto)
 
 @cache_page(60)
 def amigos_disponiveis(request):

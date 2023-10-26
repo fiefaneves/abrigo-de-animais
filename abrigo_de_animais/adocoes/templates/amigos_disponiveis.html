@@ -5,7 +5,14 @@
     <h1 class="text-body-emphasis">Amigos disponíveis para adoção</h1>
 
     {% for adocao in adocoes %}
-        <p> {{adocao.nome}}, {{adocao.idade}}. </p>
+      <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
+          <div class="card h-100 p-4">
+            <img src="{{ adocao.foto.url }}" class="card-img-top">
+            <p> {{adocao.nome}}, {{adocao.idade}} anos. </p>
+          </div>
+      </div>
+    {% empty %}
+    <p>Nenhum amigo disponível.</p>
     {% endfor %}
 
 {% endblock %}

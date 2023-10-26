@@ -9,6 +9,7 @@ class Adocoes(models.Model):
         ('Tartaruga', 'Tartaruga'),
         ('Hamster', 'Hamster')
     )
+    foto = models.ImageField(upload_to="fotos_pets", default='fotos_pets/', null=True, blank=True)
     nome = models.CharField(max_length=50)
     especie = models.CharField(max_length=50, choices=especies)
     idade = models.IntegerField()
