@@ -5,7 +5,8 @@ from django.views.decorators.cache import cache_page
 
 # Create your views here.
 def cadastro_adocao(request):
-    form = AdocoesForm(request.POST or None)
+    print (request.FILES)
+    form = AdocoesForm(request.POST or None, request.FILES or None)
     sucesso = False
     if form.is_valid():
         form.save()
@@ -16,10 +17,9 @@ def cadastro_adocao(request):
     }
     return render(request, 'cadastro_amigo.html', contexto)
 
-@cache_page(60)
 def amigos_disponiveis(request):
     adocoes = Adocoes.objects.all()
     contexto = {
-        'adocao': adocoes
+        'adocoes': adocoes
     }
     return render(request, 'amigos_disponiveis.html', contexto)

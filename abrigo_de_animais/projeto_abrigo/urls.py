@@ -26,3 +26,6 @@ urlpatterns = [
     path('cadastro/', cadastro),
     path('adocoes/', include('adocoes.urls', namespace='adocoes'))
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

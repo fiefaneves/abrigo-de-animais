@@ -8,7 +8,7 @@
 <p class="alert alert-success">Amigo cadastrado com sucesso!</p>
 {% endif %}
 
-<form action="" method="POST" id="form">
+<form action="" method="POST" id="form" enctype="multipart/form-data">
   {% csrf_token %}
   {% bootstrap_form form %}
     <button type="submit" class="btn btn-primary btn-block">Cadastrar amigo</button>
