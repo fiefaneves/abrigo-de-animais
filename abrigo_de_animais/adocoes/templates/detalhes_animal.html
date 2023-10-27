@@ -2,13 +2,46 @@
 {% load bootstrap5 %}
 {% block principal %}
 
-<h1 class="text-body-emphasis">Detalhes do seu amigo</h1>
+<style>
+    .animal-details {
+    display: flex;
+    align-items: flex-start;
+  }
+    .square-image-container {
+    width: 30%;
+    padding-bottom: 30%;
+    position: relative;
+    overflow: hidden;
+    margin-right: 10px;
+  }
+  
+  .square-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-<h1>Detalhes do Animal: {{ animal.nome }}</h1>
-<p>Espécie: {{ animal.especie }}</p>
-<p>Idade: {{ animal.idade }} anos</p>
-<p>Raça: {{ animal.raca }}</p>
-<p>Histórico de Saúde: {{ animal.historico_saude }}</p>
-<img src="{{ animal.foto.url }}" alt="{{ animal.nome }}">
+  .animal-info {
+    width: 50%;
+    padding: 10px; 
+  }
+</style>
 
+<h2 class="text-body-emphasis">Detalhes do seu amigo</h2>
+<div class="animal-details">
+    <div class="square-image-container">
+        <img src="{{ animal.foto.url }}" class="square-image" alt="{{ animal.nome }}">
+    </div>
+    <div class="animal-info">
+        <h2>{{ animal.nome }}</h2>
+        <p>Espécie: {{ animal.especie }}</p>
+        <p>Idade: {{ animal.idade }} anos</p>
+        <p>Raça: {{ animal.raca }}</p>
+        <p>Histórico de Saúde: {{ animal.historico_saude }}</p>
+        <a href="/cadastro" class="btn btn-primary btn-block text-white">Quero adotar</a>
+    </div>
+</div>
 {% endblock %}
