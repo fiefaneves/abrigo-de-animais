@@ -5,9 +5,11 @@
 <style>
   .square-image-container {
   width: 100%;
-  padding-bottom: 100%; /* Define a proporção quadrada (altura igual à largura) */
+  padding-bottom: 100%;
   position: relative;
   overflow: hidden;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .square-image {
@@ -16,28 +18,35 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Mantém a imagem dentro do contêiner quadrado */
+  object-fit: cover;
+}
+
+.animal-name {
+  color: #495057;
+  font-weight: bold;
+  text-decoration: none;
 }
 </style>
 
-    <h1 class="text-body-emphasis">Amigos disponíveis para adoção</h1>
-
-    <div class="row">
-      {% for adocao in adocoes %}
-        <div class="col-4" style="padding-bottom: 10px;">
-          <div class="card h-100 p-4" style="align-items: center">
-            <div class="square-image-container">
-              <img src="{{ adocao.foto.url }}" class="square-image" alt="{{ adocao.nome }}">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title" > <a href="/adocoes/amigo/{{ adocao.id }}/">{{ adocao.nome }}</a>, {{ adocao.idade }} anos.</h5>
-              <a href="/cadastro" class="btn btn-primary btn-block text-white">Quero adotar</a>
-            </div>
-          </div>
+<div class="row">
+  <h1 class="text-body-emphasis col text-center h1 mb-4">Amigos disponíveis para adoção:</h1>
+</div>
+<div class="row">
+  {% for adocao in adocoes %}
+    <div class="col-4" style="padding-bottom: 10px;">
+      <div class="card h-100" style="align-items: center">
+        <div class="square-image-container">
+          <img src="{{ adocao.foto.url }}" class="square-image" alt="{{ adocao.nome }}">
         </div>
-      {% empty %}
-      <p class="col">Nenhum amigo disponível.</p>
-      {% endfor %}
+        <div class="card-body">
+          <h5 class="card-title" > <a href="/adocoes/amigo/{{ adocao.id }}/" class="animal-name">{{ adocao.nome }}</a>, {{ adocao.idade }} anos.</h5>
+          <a href="/cadastro" class="btn btn-primary btn-block text-white">Quero adotar</a>
+        </div>
+      </div>
     </div>
+  {% empty %}
+  <p class="col">Nenhum amigo disponível.</p>
+  {% endfor %}
+</div>
 
 {% endblock %}

@@ -18,19 +18,25 @@
   height: 100%;
   object-fit: cover; /* Mantém a imagem dentro do contêiner quadrado */
 }
+
+.animal-name {
+  color: #495057;
+  font-weight: bold;
+  text-decoration: none;
+}
 </style>
-
-    <h1 class="text-body-emphasis">Amigos disponíveis para adoção</h1>
-
+  <div class="row"> 
+    <h1  class="text-body-emphasis col text-center h1 mb-4">Encontre o amigo que você está procurando:</h1>
+  </div>
     <div class="row">
       {% for adocao in adocoes %}
-        <div class="col-4" style="padding-bottom: 10px;">
-          <div class="card h-100 p-4" style="align-items: center">
+        <div class="col-4" style="padding-bottom:10px;">
+          <div class="card h-100" style="align-items:center">
             <div class="square-image-container">
               <img src="{{ adocao.foto.url }}" class="square-image" alt="{{ adocao.nome }}">
             </div>
             <div class="card-body">
-              <h5 class="card-title"><a href="/adocoes/amigo/{{ adocao.id }}/">{{ adocao.nome }}</a>, {{ adocao.idade }} anos.</h5>
+              <h5 class="card-title"><a href="/adocoes/amigo/{{ adocao.id }}/" class="animal-name">{{ adocao.nome }}</a>, {{ adocao.idade }} anos.</h5>
               <a href="/cadastro" class="btn btn-primary btn-block text-white">Quero adotar</a>
             </div>
           </div>
