@@ -144,7 +144,6 @@
 <div class="col-lg-8 mx-auto p-4 py-md-5">
   <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
     <a href="/" class="d-flex align-items-center text-body-emphasis text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-4">Abrigo de animais</span>
     </a>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -161,9 +160,13 @@
               <a class="nav-link" href="/adocoes/amigos_disponiveis">Amigos disponíveis</a>
             </li>
           </ul>
-        </div>
+        </div> 
       </div>
     </nav>
+    <form class="d-flex" role="search" style="margin-left: auto" method="GET" action="/adocoes/resultados_busca/">
+      <input class="form-control me-2" type="search" placeholder="Encontre seu amigo!" aria-label="Search" name="termo_busca">
+      <button class="btn btn-outline-success" type="submit">OK</button>
+    </form>
   </header>
 
   <main>
@@ -171,7 +174,7 @@
     <style>
       .square-image-container {
       width: 100%;
-      padding-bottom: 100%; /* Define a proporção quadrada (altura igual à largura) */
+      padding-bottom: 100%;
       position: relative;
       overflow: hidden;
     }
@@ -182,7 +185,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Mantém a imagem dentro do contêiner quadrado */
+      object-fit: cover;
     }
     </style>
     <div>
@@ -198,7 +201,7 @@
               <img src="{{ adocao.foto.url }}" class="square-image" alt="{{ adocao.nome }}">
             </div>
             <div class="card-body">
-              <h5 class="card-title" > <a href="adocoes/amigo/{{ adocao.id }}/">{{ adocao.nome }}</a>, {{ adocao.idade }} anos.</h5>
+              <h5 class="card-title" > <a href="/adocoes/amigo/{{ adocao.id }}/">{{ adocao.nome }}</a>, {{ adocao.idade }} anos.</h5>
               <a href="/cadastro" class="btn btn-primary btn-block text-white">Quero adotar</a>
             </div>
           </div>

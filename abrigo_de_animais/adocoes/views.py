@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from adocoes.forms import AdocoesForm
 from adocoes.models import Adocoes
 from django.views.decorators.cache import cache_page
+from django.db.models import Q
 
 # Create your views here.
 def cadastro_adocao(request):
@@ -30,3 +31,17 @@ def detalhes_animal(request, animal_id):
         'animal': animal
     }
     return render(request, 'detalhes_animal.html', contexto)
+
+def busca(request):
+    termo_busca = request.GET.get('termo_busca')
+    if termo_busca:
+        adocoes = Adocoes.objects.filter(
+            Q(nome__icontains = termo_busca) | 
+            Q(raca__icontains = termo_busca) |
+            Q(especie__icontains = termo_busca) |
+            Q(historico_de_saude__icontains = termo_busca)
+        )
+        contexto = {
+            'adocoes': adocoes
+        }
+        return render(request, 'resultados_busca.html', contexto)
