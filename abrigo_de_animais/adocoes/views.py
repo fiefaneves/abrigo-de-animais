@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from adocoes.forms import AdocoesForm
 from adocoes.models import Adocoes
-from django.views.decorators.cache import cache_page
 from django.db.models import Q
 
 # Create your views here.
