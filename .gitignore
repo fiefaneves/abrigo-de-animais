@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg
+*.egg-info/
+*.manifest
+*.spec
+
+# Django
+*.log
+*.pot
+*.pyc
+*.sqlite3
+*.db
+*.env
+*.venv
+*.idea/
+*.vscode/
+
+# Virtual Environment
+Lib/
+Scripts/
+
+# Media
+media/
+
+# Static files
+staticfiles/
+static/
